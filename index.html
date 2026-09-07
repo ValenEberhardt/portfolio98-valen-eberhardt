@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentin Eberhardt - Portfolio98</title>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+
+    <style>
+
+        *{
+            box-sizing: border-box;
+        }
+
+        body {
+        margin: 0;
+        height: 100vh;
+        background-color: #008080; /* Verde clásico Win98 */
+        font-family: "Pixelated MS Sans Serif", Arial, sans-serif;
+        overflow: hidden;
+        }
+        /* Iconos del Escritorio */
+        .desktop {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        }
+
+        .desktop-icon {
+        width: 75px;
+        text-align: center;
+        color: white;
+        cursor: pointer;
+        }
+
+        .desktop-icon img {
+        width: 32px;
+        height: 32px;
+        }
+
+        /* Estilo de la ventana */
+        .window {
+        width: 350px;
+        position: absolute;
+        top: 80px;
+        left: 100px;
+        display: none; /* Inicia oculta hasta hacer doble clic */
+        z-index: 10;
+        }
+        
+
+        /* Barra de Tareas */
+        .taskbar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 35px;
+        background: #c0c0c0;
+        border-top: 2px solid #fff;
+        display: flex;
+        align-items: center;
+        padding: 2px 4px;
+        gap: 6px;
+        z-index: 100;
+            }
+  
+
+
+
+
+        /* Contenedor principal de las 3 columnas */
+        .explorer-layout {
+        display: flex;
+        gap: 8px; /* Separación entre columnas */
+        height: 500px; /* Altura fija para que el scroll funcione */
+        }   
+
+        /* Estilos compartidos para las columnas */
+        .column {
+        background-color: white;
+        padding: 8px;
+        overflow-y: auto; /* Agrega scroll si el contenido es muy largo */
+        }
+
+        /* Ajustamos los anchos de cada columna */
+        .col-left { flex: 1; }
+        .col-mid { flex: 1.2; }
+        .col-right { flex: 1.5; }
+
+        /* Estilos para listas y botones para que parezcan de los 90s */
+        .menu-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        }
+
+        .menu-item {
+        padding: 4px;
+        cursor: pointer;
+        margin-bottom: 2px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        font-size:small;
+        }
+
+ 
+
+        .menu-item:hover {
+        background-color: #000080; /* Azul de selección de Windows */
+        color: white;
+        }
+        
+        .has-submenu {
+            position: relative;
+        }
+
+        .submenu {
+        display: none;
+        position: absolute;
+        top: -3px; 
+        left: 100%; 
+        width: 150px;
+        z-index: 1001;
+        }
+
+        .submenu-arrow {
+        position: absolute;
+        right: 12px; /* Siempre a 12px del borde derecho */
+        top: 50%;
+        transform: translateY(-50%); /* Lo centra verticalmente a la perfección */
+        font-size: 10px;
+        }
+
+        .has-submenu:hover > .menu-text, 
+        .has-submenu:hover > .submenu-arrow {
+        color: white;
+        }
+        
+
+        .has-submenu:hover .submenu{
+        display: block;
+
+        }
+
+        .has-submenu:hover > div:first-child {
+        color: white;
+        }
+
+
+
+    </style>
+</head>
+
+
+<body>
+
+    <div class="desktop">
+        <div class="desktop-icon" onclick="openWindow('window-portfolio')">
+            <img src="https://win98icons.alexmeub.com/icons/png/user_computer-0.png" alt="Portfolio">
+            <div>Abrir Portfolio</div>
+        </div>
+    </div>
+
+
+<div class="window" id="window-portfolio" style="width: 1000px;">
+    <div class="title-bar">
+      <div class="title-bar-text">Portfolio98</div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize" onclick="minimizeWindow('window-portfolio')"></button>
+        <button aria-label="Maximize"></button>
+        <button aria-label="Close" onclick="closeWindow('window-portfolio')"></button>
+      </div>
+    </div>
+    
+
+    <div class="window-body">
+        
+        <div class="explorer-layout">
+
+            <div class="sunken-panel column col-left">
+                <img src="images/perfil.png" alt="" class="imagenes" style="max-width: 50%;">
+                <br> <br>
+                <h4 style="margin-top: 0;">Sobre mi: </h4>
+                <p style="font-size: 15px;">Técnico desarrollador enfocado en la calidad de software</p>
+                
+                <hr>
+
+                <ul class="menu-list">
+                    <li class="menu-item" onclick="mostrarLista('proyectos')">📁 Mis proyectos</li>
+                    <li class="menu-item" onclick="mostrarLista('herramientas')">⚙️ Herramientas que utilizo</li>
+                    <li class="menu-item" onclick="mostrarLista('contacto')">📇 Contacto</li>
+                    <li class="menu-item"> <a href="">Descargar CV</a></li>
+                </ul>
+            </div>
+
+            <div class="sunken-panel column col-mid" id="col-mid-content">
+                <p style="color: gray; text-align: center; margin-top: 70px;">Seleccione una opción a la izquierda.</p>
+            </div>
+
+            <div class="sunken-panel column col-right" id="col-right-content">
+                <p style="color: gray; text-align: center; margin-top: 70px;">Aquí verás los detalles.</p>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+<div class="taskbar">
+    <button id="start-btn" style="font-weight: bold;">
+      <img src="https://win98icons.alexmeub.com/icons/png/windows-0.png" width="16" style="vertical-align: middle;">
+      Inicio
+    </button>
+
+    <!-- botón de la ventana en la barra de tareas -->
+    <button id="taskbar-portfolio-btn" style="display: none; margin-left: 10px; font-weight: bold; width: 200px; text-align: left;" onclick="toggleWindow('window-portfolio')">
+        Portfolio98
+    </button>
+
+    <!-- Contenedor del reloj -->
+     <div style="margin-left: auto; padding: 2px 8px; border-top: 1px solid #808080; border-left: 1px solid #808080; border-bottom: 1px solid #fff; border-right: 1px solid #fff; display: flex; align-items: center; height: 22px;">
+        <span id="taskbar-clock" style="font-size: 11px;"></span>
+     </div>
+</div>
+
+
+<!-- EU, QUE HACÉS MERODEANDO POR ACÁ? BUSCANDO SECRETOS? O PARA JUZGAR MI POBRE CÓDIGO??-->
+<div class="window" id="start-menu" style="display: none; position: fixed; bottom: 35px; left: 0; width: 200px; top: auto; height: auto; z-index: 1000;">
+    <div class="window-body" style="margin: 0; padding: 5px;">
+
+        <ul class="menu-list" style="margin: 0; padding: 0; list-style: none;">
+
+
+            <li class="menu-item has-submenu" style="padding: 8px;  cursor: pointer;" onclick="openWindow('')"> <img src="https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs_2k-2.png" width="20" style="vertical-align: middle; margin-right: 5px"> 
+                Más <span class="submenu-arrow">▶</span>
+                <div class="window submenu">
+
+                    <div class="window-body" style="margin: 0; padding: 3px;">
+                        
+                        <ul class="menu-list" style="margin: 0; padding: 0; list-style: none;">
+                            <li class="menu-item" style="padding: 8px; cursor: pointer;"></li>
+                        </ul>
+
+                    </div>
+                </div>
+             </li>
+
+            
+            <li class="menu-item has-submenu" style="padding: 8px; cursor: pointer;" onclick="openWindow('')"> <img src="https://win98icons.alexmeub.com/icons/png/joystick_alt-0.png" width="20" style="vertical-align: middle; margin-right: 5px"> 
+                Juegos <span class="submenu-arrow">▶</span>   
+
+                        <div class="window submenu">
+
+                            <div class="window-body" style="margin: 0; padding: 3px;">
+
+                                <ul class="menu-list" style="margin: 0; padding: 0; list-style: none;">
+                                    <li class="menu-item" style="padding: 8px; cursor: pointer; padding: 3px"> <img src="https://win98icons.alexmeub.com/icons/png/game_mine_2-0.png" width="15" style="vertical-align: middle; margin-right: 5px"> Buscaminas</li>
+                                    <li class="menu-item" style="padding: 8px; cursor: pointer; padding: 3px"> <img src="https://static.wikia.nocookie.net/logopedia/images/6/65/Maelstrom_icon.png/revision/latest?cb=20231221170517" width="15" style="vertical-align: middle; margin-right: 5px">Pinball</li>
+                                    <li class="menu-item" style="padding: 8px; cursor: pointer; padding: 3px"> Doom</li>
+                                </ul>
+
+                            </div>
+                        </div>
+
+                 </li>
+
+            <li class="menu-item" style="padding: 8px; cursor: pointer;" onclick="openWindow('')"> <img src="https://win98icons.alexmeub.com/icons/png/html-2.png" width="20" style="vertical-align: middle; margin-right: 5px"> LinkedIn </li>
+            <li class="menu-item" style="padding: 8px; cursor: pointer;" onclick="openWindow('')"> <img src="https://win98icons.alexmeub.com/icons/png/search_file_2-2.png" width="20" style="vertical-align: middle; margin-right: 5px"> Descargar CV </li>
+            <li class="menu-item" style="padding: 8px; cursor: pointer;" onclick="openWindow('')"> <img src="https://win98icons.alexmeub.com/icons/png/envelope_closed-0.png" width="20" style="vertical-align: middle; margin-right: 5px"> Contacto </li>
+            <hr>
+            <li class="menu-item" style="padding: 8px; cursor: pointer;" onclick="alert('Es seguro apagar su equipo.')"> <img src="https://win98icons.alexmeub.com/icons/png/shut_down_cool-5.png" width="30" style="vertical-align: middle;margin-right: 5px"> Apagar equipo </li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+    <script src="js/script.js"></script>
+</body>
+</html>
