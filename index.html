@@ -122,7 +122,7 @@
         .submenu {
         display: none;
         position: absolute;
-        top: -3px; 
+        top: -1px; 
         left: 100%; 
         width: 150px;
         z-index: 1001;
@@ -161,10 +161,12 @@
 
     <div class="desktop">
         <div class="desktop-icon" onclick="openWindow('window-portfolio')">
-            <img src="https://win98icons.alexmeub.com/icons/png/user_computer-0.png" alt="Portfolio">
+            <img src="https://win98icons.alexmeub.com/icons/png/briefcase-3.png" alt="Portfolio">
             <div>Abrir Portfolio</div>
         </div>
     </div>
+
+
 
 
 <div class="window" id="window-portfolio" style="width: 1000px;">
@@ -179,9 +181,7 @@
     
 
     <div class="window-body">
-        
         <div class="explorer-layout">
-
             <div class="sunken-panel column col-left">
                 <img src="images/perfil.png" alt="" class="imagenes" style="max-width: 50%;">
                 <br> <br>
@@ -205,12 +205,32 @@
             <div class="sunken-panel column col-right" id="col-right-content">
                 <p style="color: gray; text-align: center; margin-top: 70px;">Aquí verás los detalles.</p>
             </div>
-
-
         </div>
     </div>
 
 
+</div>
+
+
+<!--Ventana buscaminas-->
+
+<div class="window" id="window-minesweeper" style="width: auto; position: absolute; top: 50px; left: 50px; display: none; z-index: 10;">
+  
+  <div class="title-bar">
+    <div class="title-bar-text">
+      <img src="https://win98icons.alexmeub.com/icons/png/minesweeper-0.png" width="16" style="vertical-align: middle; margin-right: 3px;">
+      Buscaminas
+    </div>
+    <div class="title-bar-controls">
+      <button aria-label="Minimize" onclick="minimizeWindow('window-minesweeper')"></button>
+      <button aria-label="Maximize"></button>
+      <button aria-label="Close" onclick="closeWindow('window-minesweeper')"></button>
+    </div>
+  </div>
+  <!-- El iframe carga el juego directamente. Eliminamos los márgenes para que encaje perfecto -->
+  <div class="window-body" style="margin: 0; padding: 0; background-color: #c0c0c0;">
+    <iframe src="extras/Minesweeper-win98-vue-main/dist/index.html" frameborder="0" width="420px" height="600px" style="display: block;"></iframe>
+  </div>
 </div>
 
 
@@ -223,8 +243,14 @@
     </button>
 
     <!-- botón de la ventana en la barra de tareas -->
-    <button id="taskbar-portfolio-btn" style="display: none; margin-left: 10px; font-weight: bold; width: 200px; text-align: left;" onclick="toggleWindow('window-portfolio')">
+    <button id="window-portfolio-btn" style="display: none; margin-left: 10px; font-weight: bold; width: 200px; text-align: left;" onclick="toggleWindow('window-portfolio')">
         Portfolio98
+    </button>
+
+    <!-- boton del buscaminas-->
+     <button id="btn-window-minesweeper" style="display: none; margin-left: 5px; font-weight: bold;" onclick="toggleWindow('window-minesweeper')">
+        <img src="https://win98icons.alexmeub.com/icons/png/minesweeper-0.png" width="16" style="vertical-align: middle;">
+        Buscaminas
     </button>
 
     <!-- Contenedor del reloj -->
@@ -264,7 +290,7 @@
                             <div class="window-body" style="margin: 0; padding: 3px;">
 
                                 <ul class="menu-list" style="margin: 0; padding: 0; list-style: none;">
-                                    <li class="menu-item" style="padding: 8px; cursor: pointer; padding: 3px"> <img src="https://win98icons.alexmeub.com/icons/png/game_mine_2-0.png" width="15" style="vertical-align: middle; margin-right: 5px"> Buscaminas</li>
+                                    <li class="menu-item" style="padding: 8px; cursor: pointer; padding: 3px" onclick="openWindow('window-minesweeper')"> <img src="https://win98icons.alexmeub.com/icons/png/game_mine_2-0.png" width="15" style="vertical-align: middle; margin-right: 5px"> Buscaminas</li>
                                     <li class="menu-item" style="padding: 8px; cursor: pointer; padding: 3px"> <img src="https://static.wikia.nocookie.net/logopedia/images/6/65/Maelstrom_icon.png/revision/latest?cb=20231221170517" width="15" style="vertical-align: middle; margin-right: 5px">Pinball</li>
                                     <li class="menu-item" style="padding: 8px; cursor: pointer; padding: 3px"> Doom</li>
                                 </ul>

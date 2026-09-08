@@ -124,7 +124,7 @@ function mostrarDetalle(categoria, index) {
 
 function openWindow(id) {
       const windowEl = document.getElementById(id);
-      const tastkbarBtn = document.getElementById('taskbar-portfolio-btn');
+      const tastkbarBtn = document.getElementById(id + '-btn');
 
       windowEl.style.display = 'block';
       tastkbarBtn.style.display = 'block';
@@ -135,7 +135,7 @@ function openWindow(id) {
 function closeWindow(id) {
 
   const windowEl = document.getElementById(id);
-  const tastkbarBtn = document.getElementById('taskbar-portfolio-btn');
+  const tastkbarBtn = document.getElementById(id + '-btn');
 
   windowEl.style.display = 'none';
   tastkbarBtn.style.display = 'none';
@@ -180,9 +180,7 @@ document.addEventListener('click', (e) => {
 
 //Funcion para minimizar
 function minimizeWindow(id){
-  const windowEl = document.getElementById(id);
-
-  windowEl.style.display= 'none';
+  document.getElementById(id).style.display = 'none';
 }
 
 //Funcion para arrastrar ventanas:
@@ -232,8 +230,6 @@ function makeDraggable(windowElement){
 
 // que el portfolio se pueda arrastrar
 
-const portfolio = document.getElementById("window-portfolio");
-makeDraggable(portfolio);
 
 
 
@@ -282,4 +278,7 @@ function cambiarImagen(direccion) {
 
 }
 
+const portfolio = document.getElementById("window-portfolio");
+makeDraggable(portfolio);
 
+makeDraggable(document.getElementById("window-minesweeper"));
