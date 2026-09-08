@@ -228,11 +228,36 @@
     </div>
   </div>
   <!-- El iframe carga el juego directamente. Eliminamos los márgenes para que encaje perfecto -->
-  <div class="window-body" style="margin: 0; padding: 0; background-color: #c0c0c0;">
-    <iframe src="extras/Minesweeper-win98-vue-main/dist/index.html" frameborder="0" width="420px" height="600px" style="display: block;"></iframe>
+  <div class="window-body" style="margin: 0; padding: 0;">
+    <iframe src="extras/Minesweeper-win98-vue-main/dist/index.html" frameborder="0" width="165px" height="245px" style="display: block;"></iframe>
   </div>
 </div>
 
+
+
+
+<!--Ventana pinball-->
+<!-- Ventana: Pinball -->
+<div class="window" id="window-pinball" style="width: 620px; position: absolute; top: 30px; left: 100px; display: none; z-index: 10;">
+  
+  <div class="title-bar">
+    <div class="title-bar-text">
+      <img src="https://win98icons.alexmeub.com/icons/png/joystick-0.png" width="16" style="vertical-align: middle; margin-right: 3px;">
+      3D Pinball - Space Cadet
+    </div>
+    <div class="title-bar-controls">
+      <button aria-label="Minimize" onclick="minimizeWindow('window-pinball')"></button>
+      <button aria-label="Maximize"></button>
+      <button aria-label="Close" onclick="closeWindow('window-pinball')"></button>
+    </div>
+  </div>
+
+  <div class="window-body" style="margin: 0; padding: 0; background-color: black;">
+    <!-- El iframe apunta al port de WebAssembly del Pinball -->
+    <iframe src="https://alula.github.io/SpaceCadetPinball/" frameborder="0" width="100%" height="500px" style="display: block;"></iframe>
+  </div>
+
+</div>
 
 
 
@@ -248,9 +273,14 @@
     </button>
 
     <!-- boton del buscaminas-->
-     <button id="btn-window-minesweeper" style="display: none; margin-left: 5px; font-weight: bold;" onclick="toggleWindow('window-minesweeper')">
+     <button id="window-minesweeper-btn" style="display: none; margin-left: 5px; font-weight: bold;" onclick="toggleWindow('window-minesweeper')">
         <img src="https://win98icons.alexmeub.com/icons/png/minesweeper-0.png" width="16" style="vertical-align: middle;">
         Buscaminas
+    </button>
+ <!-- boton del pinball-->
+    <button id="window-pinball-btn" style="display: none; margin-left: 5px; font-weight: bold;" onclick="toggleWindow('window-pinball')">
+        <img src="https://static.wikia.nocookie.net/logopedia/images/6/65/Maelstrom_icon.png/revision/latest?cb=20231221170517" width="16" style="vertical-align: middle;">
+        3D Pinball
     </button>
 
     <!-- Contenedor del reloj -->
@@ -291,7 +321,7 @@
 
                                 <ul class="menu-list" style="margin: 0; padding: 0; list-style: none;">
                                     <li class="menu-item" style="padding: 8px; cursor: pointer; padding: 3px" onclick="openWindow('window-minesweeper')"> <img src="https://win98icons.alexmeub.com/icons/png/game_mine_2-0.png" width="15" style="vertical-align: middle; margin-right: 5px"> Buscaminas</li>
-                                    <li class="menu-item" style="padding: 8px; cursor: pointer; padding: 3px"> <img src="https://static.wikia.nocookie.net/logopedia/images/6/65/Maelstrom_icon.png/revision/latest?cb=20231221170517" width="15" style="vertical-align: middle; margin-right: 5px">Pinball</li>
+                                    <li class="menu-item" style="padding: 8px; cursor: pointer; padding: 3px" onclick="openWindow('window-pinball')"> <img src="https://static.wikia.nocookie.net/logopedia/images/6/65/Maelstrom_icon.png/revision/latest?cb=20231221170517" width="15" style="vertical-align: middle; margin-right: 5px">Pinball</li>
                                     <li class="menu-item" style="padding: 8px; cursor: pointer; padding: 3px"> Doom</li>
                                 </ul>
 
