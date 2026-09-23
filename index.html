@@ -229,7 +229,7 @@
   </div>
   <!-- El iframe carga el juego directamente. Eliminamos los márgenes para que encaje perfecto -->
   <div class="window-body" style="margin: 0; padding: 0;">
-    <iframe src="extras/Minesweeper-win98-vue-main/dist/index.html" frameborder="0" width="165px" height="245px" style="display: block;"></iframe>
+    <iframe src="extras/Minesweeper-win98-vue-main/dist/index.html" frameborder="0" width="165px" height="200px" style="display: block;"></iframe>
   </div>
 </div>
 
@@ -259,24 +259,7 @@
 </div>
 
 
-<div class="window" id="window-doom" style="width: 750px; position: absolute; top: 30px; left: 100px; display: none; z-index: 10;">
-  
-  <div class="title-bar">
-    <div class="title-bar-text">
-      <img src="" width="16" style="vertical-align: middle; margin-right: 3px;">
-      DOOM
-    </div>
-    <div class="title-bar-controls">
-      <button aria-label="Minimize" onclick="minimizeWindow('window-doom')"></button>
-      <button aria-label="Maximize"></button>
-      <button aria-label="Close" onclick="closeWindow('window-doom')"></button>
-    </div>
-  </div>
 
-  <div class="window-body" style="margin: 0; padding: 0; background-color: black;">
-    <!-- El iframe apunta al port de WebAssembly del Pinball -->
-    <iframe src="https://ustymukhman.github.io/WebDOOM/public/" frameborder="0" width="700px" height="500px" style="display: block;"></iframe>
-  </div>
 
 </div>
 
@@ -304,10 +287,6 @@
         3D Pinball
     </button>
 
-    <button id="window-doom-btn" style="display: none; margin-left: 5px; font-weight: bold;" onclick="toggleWindow('window-pinball')">
-        <img src="https://static.wikia.nocookie.net/logopedia/images/6/65/Maelstrom_icon.png/revision/latest?cb=20231221170517" width="16" style="vertical-align: middle;">
-        DOOM
-    </button>
 
     <!-- Contenedor del reloj -->
      <div style="margin-left: auto; padding: 2px 8px; border-top: 1px solid #808080; border-left: 1px solid #808080; border-bottom: 1px solid #fff; border-right: 1px solid #fff; display: flex; align-items: center; height: 22px;">
@@ -348,7 +327,7 @@
                                 <ul class="menu-list" style="margin: 0; padding: 0; list-style: none;">
                                     <li class="menu-item" style="padding: 8px; cursor: pointer; padding: 3px" onclick="openWindow('window-minesweeper')"> <img src="https://win98icons.alexmeub.com/icons/png/game_mine_2-0.png" width="15" style="vertical-align: middle; margin-right: 5px"> Buscaminas</li>
                                     <li class="menu-item" style="padding: 8px; cursor: pointer; padding: 3px" onclick="openWindow('window-pinball')"> <img src="https://static.wikia.nocookie.net/logopedia/images/6/65/Maelstrom_icon.png/revision/latest?cb=20231221170517" width="15" style="vertical-align: middle; margin-right: 5px">Pinball</li>
-                                    <li class="menu-item" style="padding: 8px; cursor: pointer; padding: 3px" onclick="openWindow('window-doom')"> Doom</li>
+                                
                                 </ul>
 
                             </div>

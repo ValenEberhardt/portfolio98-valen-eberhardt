@@ -189,32 +189,7 @@ onMounted(() => {
 	<div class="flex justify-center h-screen">
 		<div class="flex flex-col justify-center">
 			<div id="window" class="flex flex-col w-fit h-fit shadow-window bg-gray-win p-px scale-100">
-				<div id="win-header" class="flex bg-blue-win p-px justify-between">
-					<div class="flex">
-						<div id="icon" class="flex justify-center">
-							<img src="../src/assets/img/Icon.png" alt="mine-icon" class="w-4 h-4 m-auto">
-						</div>
-						<p class="text-white text-smallest self-center font-retrobold ml-0.5 first-letter:mr-px tracking-wide">Minesweeper</p>
-					</div>
-					<div class="flex">
-						<div class="flex ml-[5px]">
-							<button><img src="../src/assets/img/minimize.png" alt="minimize-icon" class="w-4 h-3.5"></button>
-							<button><img src="../src/assets/img/maximize.png" alt="maximize-icon" class="w-4 h-3.5"></button>
-						</div>
-						<button><img src="../src/assets/img/close.png" alt="close-icon" class="w-4 h-3.5 ml-0.5"></button>
-					</div>
-				</div>
-				<div id="win-buttons" class="relative flex mb-px">
-					<button @click.stop="toggleMenu()" class="text-xs font-retro first-letter:underline ml-0.5 px-1.5 mt-0.5" :class="active ? 'shadow-in': ''">Game</button>
-					<Menu 
-					@click.stop="toggleMenu()"
-					@newgame="reloadGrid()"
-					@dif="difficulty" 
-					v-show="active" 
-					class="absolute top-[21px] left-0.5">
-					</Menu>
-					<button class="text-xs font-retro first-letter:underline ml-0.5 px-1.5 mt-0.5">Help</button>
-				</div>
+		
 				<div id="game-window" class="flex flex-col w-fit h-fit self-center">
 					<div id="top" class="flex w-full h-[3px] bg-white justify-end">
 						<img src="../src/assets/img/side-win.png" alt="side-shadow" class="w-[3px] h-[3px]">
